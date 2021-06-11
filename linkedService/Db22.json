@@ -1,0 +1,16 @@
+{
+	"name": "Db22",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Db2",
+		"typeProperties": {
+			"connectionString": "server=10.195.144.39:50000;database=netis;authenticationtype=Basic;username=BVT08;packagecollection=NULLID",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiYTQ1OTVjMy0xMmVkLTRmN2ItYWI4OC1iYTgzZmM4ZmQ5ZGIiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "sandipk-shir3",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

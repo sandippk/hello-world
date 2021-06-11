@@ -1,0 +1,17 @@
+{
+	"name": "Db2Table2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Db2zos",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Db2Table",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SANDIPK",
+			"table": "TESTBLOB"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,17 @@
+{
+	"name": "FileServer1",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "C:\\ADF\\IterateAndCopySQLTables\\IterateAndCopySQLTables",
+			"userId": "adfuser",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJjYzFkNTBiMy1hNGQ5LTRiMzUtOGM0Ni1iY2M2MTI3ZGNlYmEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "sandipk-shir3",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

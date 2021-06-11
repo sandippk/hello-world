@@ -1,0 +1,17 @@
+{
+	"name": "Db2zosODBCProgressDS",
+	"properties": {
+		"description": "Db2zosODBCProgressDS",
+		"linkedServiceName": {
+			"referenceName": "Db2zosODBCProgressLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OdbcTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "\"SANDIPK\".\"TESTBLOB\""
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

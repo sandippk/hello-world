@@ -1,0 +1,9 @@
+{
+	"name": "sandipk-adf-02",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "a00c19ab-7302-4169-9cdb-e3a371d8bc65",
+		"tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+	}
+}

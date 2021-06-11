@@ -1,0 +1,17 @@
+{
+	"name": "Db2Table1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Db22",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Db2Table",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SANDIPK",
+			"table": "Employee"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

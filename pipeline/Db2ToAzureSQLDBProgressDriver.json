@@ -1,0 +1,55 @@
+{
+	"name": "Db2ToAzureSQLDBProgressDriver",
+	"properties": {
+		"description": "Db2ToAzureSQLDBProgressDriver",
+		"activities": [
+			{
+				"name": "Db2 To AzureSQLDB BLOB Transfer",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "OdbcSource",
+						"query": "SELECT * FROM SANDIPK.TESTBLOB OPTIMIZE FOR 10 ROWS;",
+						"queryTimeout": "02:00:00"
+					},
+					"sink": {
+						"type": "AzureSqlSink"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Db2zosODBCProgressDS",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "AzureSqlTableBlob",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-06-11T15:11:25Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

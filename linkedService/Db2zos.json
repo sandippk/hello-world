@@ -1,0 +1,17 @@
+{
+	"name": "Db2zos",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "Db2zos",
+		"annotations": [],
+		"type": "Db2",
+		"typeProperties": {
+			"connectionString": "server=sys1:41448;database=D11FD037;authenticationtype=Basic;username=dsninja;packagecollection=NULLID",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI5M2Y3ZTg0Zi1mODIxLTQ5NzQtYTMyNy0zZWFhNmJhYWE3MGQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "sandipk-shir3",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

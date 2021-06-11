@@ -1,0 +1,17 @@
+{
+	"name": "AzureSqlTableBlob",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseBlob",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SANDIPK",
+			"table": "TESTBLOB"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

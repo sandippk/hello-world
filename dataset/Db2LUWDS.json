@@ -1,0 +1,17 @@
+{
+	"name": "Db2LUWDS",
+	"properties": {
+		"description": "Db2LUWDS",
+		"linkedServiceName": {
+			"referenceName": "DB2LUWODBCProgress",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "OdbcTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "SANDIPK.TESTBLOB"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

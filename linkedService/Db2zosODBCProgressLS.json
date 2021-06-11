@@ -1,0 +1,22 @@
+{
+	"name": "Db2zosODBCProgressLS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "Db2zosODBCProgressLS",
+		"annotations": [],
+		"type": "Odbc",
+		"typeProperties": {
+			"connectionString": {
+				"type": "SecureString",
+				"value": "**********"
+			},
+			"authenticationType": "Basic",
+			"userName": "dsninja",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyYTliMGU4My1jYzk2LTQ4MjUtOGIwNS0xNGUwYWY3NmM2NGUiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "sandipk-shir3",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
