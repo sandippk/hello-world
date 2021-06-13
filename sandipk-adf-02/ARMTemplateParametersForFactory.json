@@ -1,0 +1,69 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "sandipk-adf-02"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabaseBlob_connectionString": {
+			"value": ""
+		},
+		"DB2LUWODBCProgress_connectionString": {
+			"value": ""
+		},
+		"DB2LUWODBCProgress_password": {
+			"value": ""
+		},
+		"Db21_connectionString": {
+			"value": ""
+		},
+		"Db22_connectionString": {
+			"value": ""
+		},
+		"Db2zos_connectionString": {
+			"value": ""
+		},
+		"Db2zosODBCProgressLS_connectionString": {
+			"value": ""
+		},
+		"Db2zosODBCProgressLS_password": {
+			"value": ""
+		},
+		"FileServer1_password": {
+			"value": ""
+		},
+		"db2LUWMSOleDB2LS_connectionString": {
+			"value": ""
+		},
+		"DB2LUWODBCProgress_properties_typeProperties_userName": {
+			"value": "BVT08"
+		},
+		"Db2zosODBCProgressLS_properties_typeProperties_userName": {
+			"value": "dsninja"
+		},
+		"FileServer1_properties_typeProperties_host": {
+			"value": "C:\\ADF\\IterateAndCopySQLTables\\IterateAndCopySQLTables"
+		},
+		"FileServer1_properties_typeProperties_userId": {
+			"value": "adfuser"
+		},
+		"dataFactory_properties_globalParameters_global_param1_value": {
+			"value": "v2"
+		},
+		"dataFactory_properties_globalParameters_another_param_value": {
+			"value": "test"
+		},
+		"dataFactory_properties_globalParameters_and_another_one_value": {
+			"value": "test12"
+		},
+		"dataFactory_location": {
+			"value": "centralindia"
+		},
+		"dataFactory_identity_type": {
+			"value": "SystemAssigned"
+		}
+	}
+}

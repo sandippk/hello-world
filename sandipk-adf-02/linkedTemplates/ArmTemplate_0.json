@@ -1,0 +1,535 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "sandipk-adf-02"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"AzureSqlDatabaseBlob_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseBlob'"
+		},
+		"DB2LUWODBCProgress_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'DB2LUWODBCProgress'"
+		},
+		"DB2LUWODBCProgress_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'DB2LUWODBCProgress'"
+		},
+		"Db21_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Db21'"
+		},
+		"Db22_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Db22'"
+		},
+		"Db2zos_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Db2zos'"
+		},
+		"Db2zosODBCProgressLS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Db2zosODBCProgressLS'"
+		},
+		"Db2zosODBCProgressLS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Db2zosODBCProgressLS'"
+		},
+		"FileServer1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'FileServer1'"
+		},
+		"db2LUWMSOleDB2LS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'db2LUWMSOleDB2LS'"
+		},
+		"dataFactory_properties_globalParameters_global_param1_value": {
+			"type": "string",
+			"defaultValue": "v2"
+		},
+		"dataFactory_properties_globalParameters_another_param_value": {
+			"type": "string",
+			"defaultValue": "test"
+		},
+		"dataFactory_properties_globalParameters_and_another_one_value": {
+			"type": "string",
+			"defaultValue": "test12"
+		},
+		"dataFactory_location": {
+			"type": "string",
+			"defaultValue": "centralindia"
+		},
+		"dataFactory_identity_type": {
+			"type": "string",
+			"defaultValue": "SystemAssigned"
+		},
+		"DB2LUWODBCProgress_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "BVT08"
+		},
+		"Db2zosODBCProgressLS_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "dsninja"
+		},
+		"FileServer1_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "C:\\ADF\\IterateAndCopySQLTables\\IterateAndCopySQLTables"
+		},
+		"FileServer1_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "adfuser"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[parameters('factoryName')]",
+			"type": "Microsoft.DataFactory/factories",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"globalParameters": {
+					"global_param1": {
+						"type": "string",
+						"value": "[parameters('dataFactory_properties_globalParameters_global_param1_value')]"
+					},
+					"another_param": {
+						"type": "string",
+						"value": "[parameters('dataFactory_properties_globalParameters_another_param_value')]"
+					},
+					"and_another_one": {
+						"type": "string",
+						"value": "[parameters('dataFactory_properties_globalParameters_and_another_one_value')]"
+					}
+				}
+			},
+			"dependsOn": [],
+			"location": "[parameters('dataFactory_location')]",
+			"identity": {
+				"type": "[parameters('dataFactory_identity_type')]"
+			}
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureBlobStorage1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabaseBlob')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "AzureSqlDatabaseBlob",
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSqlDatabaseBlob_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/sandipk-shir2')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"description": "sandipk-shir2",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/sandipk-shir3')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"description": "sandipk-shir3",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlTableBlob')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabaseBlob",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "SANDIPK",
+					"table": "TESTBLOB"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabaseBlob')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "abc_2.csv",
+						"folderPath": "csv",
+						"container": "csv"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Parquet1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "csv",
+						"container": "csv"
+					},
+					"compressionCodec": "none"
+				},
+				"schema": [
+					{
+						"name": "ID",
+						"type": "INT32"
+					},
+					{
+						"name": "NAME",
+						"type": "UTF8"
+					},
+					{
+						"name": "AMOUNT",
+						"type": "DECIMAL",
+						"precision": 38,
+						"scale": 18
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DB2LUWODBCProgress')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "DB2LUWODBCProgress",
+				"annotations": [],
+				"type": "Odbc",
+				"typeProperties": {
+					"connectionString": {
+						"type": "SecureString",
+						"value": "[parameters('DB2LUWODBCProgress_connectionString')]"
+					},
+					"authenticationType": "Basic",
+					"userName": "[parameters('DB2LUWODBCProgress_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('DB2LUWODBCProgress_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "sandipk-shir3",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/sandipk-shir3')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Db21')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Db2",
+				"typeProperties": {
+					"connectionString": "[parameters('Db21_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "sandipk-shir3",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/sandipk-shir3')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Db22')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "Db2",
+				"typeProperties": {
+					"connectionString": "[parameters('Db22_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "sandipk-shir3",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/sandipk-shir3')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Db2zos')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Db2zos",
+				"annotations": [],
+				"type": "Db2",
+				"typeProperties": {
+					"connectionString": "[parameters('Db2zos_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "sandipk-shir3",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/sandipk-shir3')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Db2zosODBCProgressLS')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Db2zosODBCProgressLS",
+				"annotations": [],
+				"type": "Odbc",
+				"typeProperties": {
+					"connectionString": {
+						"type": "SecureString",
+						"value": "[parameters('Db2zosODBCProgressLS_connectionString')]"
+					},
+					"authenticationType": "Basic",
+					"userName": "[parameters('Db2zosODBCProgressLS_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('Db2zosODBCProgressLS_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "sandipk-shir3",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/sandipk-shir3')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/FileServer1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "FileServer",
+				"typeProperties": {
+					"host": "[parameters('FileServer1_properties_typeProperties_host')]",
+					"userId": "[parameters('FileServer1_properties_typeProperties_userId')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('FileServer1_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "sandipk-shir3",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/sandipk-shir3')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/db2LUWMSOleDB2LS')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "db2LUWMSOleDB2LS",
+				"annotations": [],
+				"type": "Db2",
+				"typeProperties": {
+					"connectionString": "[parameters('db2LUWMSOleDB2LS_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "sandipk-shir3",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/sandipk-shir3')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Db2LUWDS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Db2LUWDS",
+				"linkedServiceName": {
+					"referenceName": "DB2LUWODBCProgress",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "OdbcTable",
+				"schema": [],
+				"typeProperties": {
+					"tableName": "SANDIPK.TESTBLOB"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/DB2LUWODBCProgress')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Db2Table1')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Db22",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Db2Table",
+				"schema": [],
+				"typeProperties": {
+					"schema": "SANDIPK",
+					"table": "Employee"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Db22')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Db2Table2')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Db2zos",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Db2Table",
+				"schema": [],
+				"typeProperties": {
+					"schema": "SANDIPK",
+					"table": "TESTBLOB"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Db2zos')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Db2Table3')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "db2LUWMSOleDB2LS",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Db2Table",
+				"schema": [],
+				"typeProperties": {
+					"schema": "SANDIPK",
+					"table": "TESTBLOB"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/db2LUWMSOleDB2LS')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Db2zosODBCProgressDS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Db2zosODBCProgressDS",
+				"linkedServiceName": {
+					"referenceName": "Db2zosODBCProgressLS",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "OdbcTable",
+				"schema": [],
+				"typeProperties": {
+					"tableName": "\"SANDIPK\".\"TESTBLOB\""
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Db2zosODBCProgressLS')]"
+			]
+		}
+	]
+}
