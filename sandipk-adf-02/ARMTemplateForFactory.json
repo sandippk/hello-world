@@ -551,7 +551,7 @@
 				"schema": [],
 				"typeProperties": {
 					"schema": "SANDIPK",
-					"table": "TESTBLOB"
+					"table": "EMPLOYEE"
 				}
 			},
 			"dependsOn": [
