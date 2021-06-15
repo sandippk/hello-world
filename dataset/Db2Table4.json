@@ -1,0 +1,16 @@
+{
+	"name": "Db2Table4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Db2zOSConnStrLS",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Db2Table",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SANDIPK",
+			"table": "EMPLOYEE"
+		}
+	}
+}

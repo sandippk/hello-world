@@ -1,0 +1,8 @@
+{
+	"name": "Db2zOSConnStrDS",
+	"properties": {
+		"annotations": [],
+		"type": "Db2Table",
+		"schema": []
+	}
+}
