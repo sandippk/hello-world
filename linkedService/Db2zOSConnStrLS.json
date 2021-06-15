@@ -1,0 +1,17 @@
+{
+	"name": "Db2zOSConnStrLS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "Db2zOSConnStrLS",
+		"annotations": [],
+		"type": "Db2",
+		"typeProperties": {
+			"connectionString": "server=sys1:41448;database=D11FD037;authenticationtype=Basic;username=dsninja;packagecollection=NULLID;use early metadata=True;defer prepare=True;rowset cache size=50;max pool size=100;autocommit=True;connection pooling=True",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJmMjk0MmRkMy04YmUwLTQ2MDYtYTZmMi1jNWNkMjYzZDE4MWEiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "sandipk-shir3",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
