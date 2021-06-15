@@ -2,7 +2,7 @@
 	"name": "AzureSqlTableBlob",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlDatabaseBlob",
+			"referenceName": "AzureSQLTableAI",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
