@@ -55,6 +55,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'db2LUWMSOleDB2LS'"
 		},
+		"AzureSQLTableAI_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSQLTableAI'"
+		},
 		"DB2LUWODBCProgress_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "BVT08"
@@ -123,6 +127,9 @@
 					},
 					"AzureSqlDatabaseBlob_connectionString": {
 						"value": "[parameters('AzureSqlDatabaseBlob_connectionString')]"
+					},
+					"AzureSQLTableAI_connectionString": {
+						"value": "[parameters('AzureSQLTableAI_connectionString')]"
 					},
 					"DB2LUWODBCProgress_connectionString": {
 						"value": "[parameters('DB2LUWODBCProgress_connectionString')]"

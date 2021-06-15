@@ -41,6 +41,9 @@
 		"db2LUWMSOleDB2LS_connectionString": {
 			"value": ""
 		},
+		"AzureSQLTableAI_connectionString": {
+			"value": ""
+		},
 		"DB2LUWODBCProgress_properties_typeProperties_userName": {
 			"value": "BVT08"
 		},

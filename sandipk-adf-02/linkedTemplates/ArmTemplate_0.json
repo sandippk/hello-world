@@ -15,6 +15,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabaseBlob'"
 		},
+		"AzureSQLTableAI_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSQLTableAI'"
+		},
 		"DB2LUWODBCProgress_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'DB2LUWODBCProgress'"
@@ -172,12 +176,26 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureSQLTableAI')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "AzureSQLTableAI",
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSQLTableAI_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureSqlTableBlob')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabaseBlob",
+					"referenceName": "AzureSQLTableAI",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
@@ -189,7 +207,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabaseBlob')]"
+				"[concat(variables('factoryId'), '/linkedServices/AzureSQLTableAI')]"
 			]
 		},
 		{
@@ -511,27 +529,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/Db2zos')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Db2Table3')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "db2LUWMSOleDB2LS",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Db2Table",
-				"schema": [],
-				"typeProperties": {
-					"schema": "SANDIPK",
-					"table": "TESTBLOB"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/db2LUWMSOleDB2LS')]"
 			]
 		}
 	]

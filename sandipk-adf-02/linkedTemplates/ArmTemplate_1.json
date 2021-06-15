@@ -13,6 +13,25 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/Db2Table3')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "db2LUWMSOleDB2LS",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Db2Table",
+				"schema": [],
+				"typeProperties": {
+					"schema": "SANDIPK",
+					"table": "TESTBLOB"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Db2Table4')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -183,7 +202,9 @@
 				"annotations": [],
 				"lastPublishTime": "2021-06-10T14:23:45Z"
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Db2Table3')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/Db2LUWToAzureProgress')]",
@@ -446,7 +467,9 @@
 								"type": "Db2Source"
 							},
 							"sink": {
-								"type": "AzureSqlSink"
+								"type": "AzureSqlSink",
+								"tableOption": "autoCreate",
+								"disableMetricsCollection": false
 							},
 							"enableStaging": false,
 							"translator": {
