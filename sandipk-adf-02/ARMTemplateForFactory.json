@@ -31,6 +31,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Db22'"
 		},
+		"Db2zOSConnStrLS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Db2zOSConnStrLS'"
+		},
 		"Db2zos_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Db2zos'"
@@ -468,6 +472,66 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/Db2zOSConnStr')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Db2zOSConnStr",
+				"activities": [
+					{
+						"name": "Db2zOSConnStr",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "Db2Source"
+							},
+							"sink": {
+								"type": "AzureSqlSink"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "Db2Table4",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "AzureSqlTableBlob",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[variables('factoryId')]",
+				"[concat(variables('factoryId'), '/datasets/Db2Table4')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSqlTableBlob')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AzureSqlTableBlob')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -575,6 +639,50 @@
 			"dependsOn": [
 				"[variables('factoryId')]",
 				"[concat(variables('factoryId'), '/linkedServices/db2LUWMSOleDB2LS')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Db2Table4')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Db2zOSConnStrLS",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Db2Table",
+				"schema": [],
+				"typeProperties": {
+					"schema": "SANDIPK",
+					"table": "EMPLOYEE"
+				}
+			},
+			"dependsOn": [
+				"[variables('factoryId')]",
+				"[concat(variables('factoryId'), '/linkedServices/Db2zOSConnStrLS')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Db2zOSConnStrDS')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Db2zOSConnStrLS",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Db2Table",
+				"schema": [],
+				"typeProperties": {
+					"schema": "SANDIPK",
+					"table": "EMPLOYEE"
+				}
+			},
+			"dependsOn": [
+				"[variables('factoryId')]",
+				"[concat(variables('factoryId'), '/linkedServices/Db2zOSConnStrLS')]"
 			]
 		},
 		{
@@ -769,6 +877,27 @@
 				"type": "Db2",
 				"typeProperties": {
 					"connectionString": "[parameters('Db22_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "sandipk-shir3",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[variables('factoryId')]",
+				"[concat(variables('factoryId'), '/integrationRuntimes/sandipk-shir3')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Db2zOSConnStrLS')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Db2zOSConnStrLS",
+				"annotations": [],
+				"type": "Db2",
+				"typeProperties": {
+					"connectionString": "[parameters('Db2zOSConnStrLS_connectionString')]"
 				},
 				"connectVia": {
 					"referenceName": "sandipk-shir3",

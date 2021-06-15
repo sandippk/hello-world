@@ -31,6 +31,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Db22'"
 		},
+		"Db2zOSConnStrLS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Db2zOSConnStrLS'"
+		},
 		"Db2zos_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Db2zos'"
@@ -334,6 +338,26 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/Db2zOSConnStrLS')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Db2zOSConnStrLS",
+				"annotations": [],
+				"type": "Db2",
+				"typeProperties": {
+					"connectionString": "[parameters('Db2zOSConnStrLS_connectionString')]"
+				},
+				"connectVia": {
+					"referenceName": "sandipk-shir3",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/sandipk-shir3')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Db2zos')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -508,27 +532,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/db2LUWMSOleDB2LS')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Db2zosODBCProgressDS')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"description": "Db2zosODBCProgressDS",
-				"linkedServiceName": {
-					"referenceName": "Db2zosODBCProgressLS",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "OdbcTable",
-				"schema": [],
-				"typeProperties": {
-					"tableName": "\"SANDIPK\".\"TESTBLOB\""
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/Db2zosODBCProgressLS')]"
 			]
 		}
 	]

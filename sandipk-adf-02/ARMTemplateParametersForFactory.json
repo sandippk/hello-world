@@ -23,6 +23,9 @@
 		"Db22_connectionString": {
 			"value": ""
 		},
+		"Db2zOSConnStrLS_connectionString": {
+			"value": ""
+		},
 		"Db2zos_connectionString": {
 			"value": ""
 		},

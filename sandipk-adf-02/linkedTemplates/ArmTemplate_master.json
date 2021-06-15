@@ -31,6 +31,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Db22'"
 		},
+		"Db2zOSConnStrLS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Db2zOSConnStrLS'"
+		},
 		"Db2zos_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'Db2zos'"
@@ -131,6 +135,9 @@
 					},
 					"Db22_connectionString": {
 						"value": "[parameters('Db22_connectionString')]"
+					},
+					"Db2zOSConnStrLS_connectionString": {
+						"value": "[parameters('Db2zOSConnStrLS_connectionString')]"
 					},
 					"Db2zos_connectionString": {
 						"value": "[parameters('Db2zos_connectionString')]"
